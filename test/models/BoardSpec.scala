@@ -4,13 +4,9 @@ import org.scalatest.{FlatSpec, Matchers}
 
 
 class BoardSpec extends FlatSpec with Matchers {
-  "Board#isColumnFull" should "return false if there are some empty positions remaining" in {
-    val board: Board = new Board
-    board.isColumnFull(1) should be (false)
-  }
 
   "Board" should "allow player to place a disc in an empty column" in {
-    val board: Board = new Board
+    val board = new Board
     board.placeDisc(1, Disc.RED) should be (true)
     board.placeDisc(1, Disc.YELLOW) should be (true)
 
@@ -22,11 +18,23 @@ class BoardSpec extends FlatSpec with Matchers {
     board.isColumnFull(1) should be (false)
   }
 
-  it should "allow player to place a disc in a partially filled column" in {
-
-  }
-
   it should "prevent player from placing a disc in a full column" in {
+    val board = new Board
 
+    // Fill up column and do checks
+    for(_ <- 0 until Board.NUM_ROWS){
+      board.placeDisc(1, Disc.RED) should be (true)
+    }
+    for(r <- 0 until Board.NUM_ROWS){
+      board.getDisc(r, 1) should be (Disc.RED)
+      board.isPositionOccupied(r, 1) should be (true)
+    }
+    board.isColumnFull(1) should be (true)
+
+    // Try to place a disc in the completely filled column
+    board.placeDisc(1, Disc.RED) should be (false)
   }
+
+
+
 }
