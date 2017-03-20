@@ -10,10 +10,10 @@ class GridSpec extends FlatSpec with Matchers {
     grid.placeDisc(1, Disc.RED) should be (true)
     grid.placeDisc(1, Disc.YELLOW) should be (true)
 
-    grid.isPositionOccupied(0, 1) should be (true)
-    grid.getDisc(0, 1) should be (Disc.RED)
-    grid.isPositionOccupied(1, 1) should be (true)
-    grid.getDisc(1, 1) should be (Disc.YELLOW)
+    grid.isPositionOccupied(Grid.NUM_ROWS - 1, 1) should be (true)
+    grid.getDisc(Grid.NUM_ROWS - 1, 1) should be (Disc.RED)
+    grid.isPositionOccupied(Grid.NUM_ROWS - 2, 1) should be (true)
+    grid.getDisc(Grid.NUM_ROWS - 2, 1) should be (Disc.YELLOW)
 
     grid.isColumnFull(1) should be (false)
   }
@@ -21,11 +21,12 @@ class GridSpec extends FlatSpec with Matchers {
   it should "prevent player from placing a disc in a full column" in {
     val grid = new Grid
 
-    // Fill up column and do checks
+    // Completely fill up column
     for(_ <- 0 until Grid.NUM_ROWS){
       grid.placeDisc(1, Disc.RED) should be (true)
     }
-    for(r <- 0 until Grid.NUM_ROWS){
+    // Verify that column is full
+    for(r <- Grid.NUM_ROWS - 1 to 0 by -1){
       grid.getDisc(r, 1) should be (Disc.RED)
       grid.isPositionOccupied(r, 1) should be (true)
     }
