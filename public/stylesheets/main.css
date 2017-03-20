@@ -1,0 +1,22 @@
+#grid {
+  background-color: black;
+  width: 330 px;
+}
+
+td {
+  min-width: 50px;
+  min-height: 50px;
+  margin: 5px;
+}
+
+td.empty {
+  background-color: grey;
+}
+
+td.red {
+  background-color: red;
+}
+
+td.yellow {
+  background-color: yellow;
+}
