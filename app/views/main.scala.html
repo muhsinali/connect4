@@ -6,11 +6,37 @@
   <title>Connect4</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
 </head>
 <body class="container">
   <p>Hey there</p>
-  @for(r <- 0 until Grid.NUM_ROWS){
-    <button type="button" class="btn btn-warning"></button>
-  }
+  <div>
+    <table>
+      <thead>
+        <tr>
+          @for(r <- 0 until Grid.NUM_COLUMNS){
+            <td><button class="btn btn-primary">@r</button></td>
+          }
+        </tr>
+      </thead>
+      <tbody>
+      @for(r <- 0 until Grid.NUM_ROWS){
+        <tr>
+        @for(c <- 0 until Grid.NUM_COLUMNS){
+          @if(grid.getDisc(r, c) == Disc.EMPTY){
+            <td class="empty">E</td>
+          }
+          @if(grid.getDisc(r, c) == Disc.RED){
+            <td class="red">R</td>
+          }
+          @if(grid.getDisc(r, c) == Disc.YELLOW){
+            <td class="yellow">Y</td>
+          }
+          }
+        </tr>
+      }
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>

@@ -1,7 +1,8 @@
 package controllers
 
 import javax.inject._
-import play.api._
+
+import models.{Disc, Grid}
 import play.api.mvc._
 
 /**
@@ -18,7 +19,11 @@ class HomeController @Inject() extends Controller {
    * a path of `/`.
    */
   def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+    val grid = new Grid
+    grid.placeDisc(1, Disc.RED)
+    grid.placeDisc(1, Disc.YELLOW)
+    grid.placeDisc(5, Disc.YELLOW)
+    Ok(views.html.main(grid))
   }
 
 }
