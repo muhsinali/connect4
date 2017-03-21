@@ -9,34 +9,29 @@
   <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
 </head>
 <body class="container">
-  <p>Hey there</p>
-  <div>
-    <table>
-      <thead>
-        <tr>
-          @for(r <- 0 until Grid.NUM_COLUMNS){
-            <td><button class="btn btn-primary">@r</button></td>
-          }
-        </tr>
-      </thead>
-      <tbody>
-      @for(r <- 0 until Grid.NUM_ROWS){
-        <tr>
+  <h1>Play Connect 4:</h1>
+  <div class="board">
+    <div class="row">
+      @for(c <- 0 until Grid.NUM_COLUMNS){
+        <div><button class="btn btn-primary">@c</button></div>
+      }
+    </div>
+
+    @for(r <- 0 until Grid.NUM_ROWS){
+      <div class="row">
         @for(c <- 0 until Grid.NUM_COLUMNS){
           @if(grid.getDisc(r, c) == Disc.EMPTY){
-            <td class="empty">E</td>
+            <div class="empty circle"></div>
           }
           @if(grid.getDisc(r, c) == Disc.RED){
-            <td class="red">R</td>
+            <div class="red circle"></div>
           }
           @if(grid.getDisc(r, c) == Disc.YELLOW){
-            <td class="yellow">Y</td>
+            <div class="gold circle"></div>
           }
-          }
-        </tr>
-      }
-      </tbody>
-    </table>
+        }
+      </div>
+    }
   </div>
 </body>
 </html>
