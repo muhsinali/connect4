@@ -15,6 +15,12 @@ div {display: inline;}
   height: 16.66%;
 }
 
+.btn {
+  margin: 0.5%;
+  width: 12%;
+  height: inherit;
+}
+
 .circle {
   display: inline-block;
   vertical-align: middle;
