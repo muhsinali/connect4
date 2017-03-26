@@ -1,4 +1,4 @@
-@(grid: Grid, currentPlayer: Player)
+@(grid: Grid, currentPlayer: Player)(implicit flash: Flash)
 
 
 <html>
@@ -9,9 +9,16 @@
   <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
 </head>
 <body class="container">
+  @if(flash.get("error").isDefined){
+    <div class="alert alert-danger">
+      @flash.get("error")
+    </div>
+  }
+
+
   <h1>Play Connect 4:</h1>
   <h2>@currentPlayer.name's turn</h2>
-  <div class>
+  <div>
     <div class="row">
       @for(c <- 0 until Grid.NUM_COLUMNS){
         <div><a class="btn btn-primary" href="@routes.HomeController.placeDisc(c)">@c</a></div>
