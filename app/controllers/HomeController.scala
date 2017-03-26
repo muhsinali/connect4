@@ -2,7 +2,7 @@ package controllers
 
 import javax.inject._
 
-import models.{Disc, Grid}
+import models.{Disc, Game}
 import play.api.mvc._
 
 /**
@@ -11,6 +11,8 @@ import play.api.mvc._
  */
 @Singleton
 class HomeController @Inject() extends Controller {
+  private val game = new Game
+
 
   /**
    * Create an Action to render an HTML page with a welcome message.
@@ -18,12 +20,14 @@ class HomeController @Inject() extends Controller {
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def index = Action {
-    val grid = new Grid
-    grid.placeDisc(1, Disc.RED)
-    grid.placeDisc(1, Disc.YELLOW)
-    grid.placeDisc(5, Disc.YELLOW)
-    Ok(views.html.main(grid))
+  def index: Action[AnyContent] = Action {
+    Ok(views.html.main(game.grid))
+  }
+
+  def placeDisc(col: Int): Action[AnyContent] = Action {
+    game.grid.placeDisc(col, Disc.RED)
+    Redirect(routes.HomeController.index())
   }
 
 }
+
