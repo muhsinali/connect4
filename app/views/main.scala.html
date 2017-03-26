@@ -10,10 +10,10 @@
 </head>
 <body class="container">
   <h1>Play Connect 4:</h1>
-  <div class="board">
+  <div class>
     <div class="row">
       @for(c <- 0 until Grid.NUM_COLUMNS){
-        <div><button class="btn btn-primary">@c</button></div>
+        <div><a class="btn btn-primary" href="@routes.HomeController.placeDisc(c)">@c</a></div>
       }
     </div>
 
