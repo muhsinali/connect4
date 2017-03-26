@@ -15,6 +15,9 @@ class Game {
 
   def placeDisc(col: Int): Boolean = {
     val result = grid.placeDisc(col, currentPlayer.disc)
+    if(!result){
+      return false
+    }
     nextPlayer()
     result
   }
