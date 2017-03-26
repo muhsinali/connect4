@@ -2,7 +2,7 @@ package controllers
 
 import javax.inject._
 
-import models.{Disc, Game}
+import models.Game
 import play.api.mvc._
 
 /**
@@ -21,11 +21,11 @@ class HomeController @Inject() extends Controller {
    * a path of `/`.
    */
   def index: Action[AnyContent] = Action {
-    Ok(views.html.main(game.grid))
+    Ok(views.html.main(game.grid, game.currentPlayer))
   }
 
   def placeDisc(col: Int): Action[AnyContent] = Action {
-    game.grid.placeDisc(col, Disc.RED)
+    game.placeDisc(col)
     Redirect(routes.HomeController.index())
   }
 
