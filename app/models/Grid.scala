@@ -23,6 +23,9 @@ class Grid {
     true
   }
 
+  // TODO test this
+  def isFull: Boolean = (0 until Grid.NUM_COLUMNS).forall(isColumnFull)
+
   // TODO check that row and col values provided are valid
   def isPositionOccupied(row: Int, col: Int): Boolean = grid(row)(col) != Disc.EMPTY
 

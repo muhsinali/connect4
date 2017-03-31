@@ -21,7 +21,7 @@ class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller 
 
   def placeDisc(col: Int): Action[AnyContent] = Action {
     if(!game.placeDisc(col)){
-      Redirect(routes.HomeController.index()).flashing("error" -> "Column is full. Please choose another column.")
+      Redirect(routes.HomeController.index()).flashing("error" -> "Column is full. Please choose another one.")
     } else Redirect(routes.HomeController.index())
   }
 
