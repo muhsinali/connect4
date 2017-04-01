@@ -16,9 +16,13 @@
   }
 
 
-  <h1>Play Connect 4:</h1>
-  <h2>@currentPlayer.name's turn</h2>
-  <div>
+  <div id="titles">
+    <h1>Play Connect 4:</h1>
+    <h3 class="pull-left">@currentPlayer.name's turn</h3>
+    <h3 class="pull-right"><a href="@routes.HomeController.reset()">Reset game</a></h3>
+  </div>
+
+  <div id="grid">
     <div class="row">
       @for(c <- 0 until Grid.NUM_COLUMNS){
         <div><a class="btn btn-primary" href="@routes.HomeController.placeDisc(c)">@c</a></div>
