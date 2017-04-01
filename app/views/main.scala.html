@@ -15,9 +15,10 @@
     </div>
   }
 
-
   <h1>Play Connect 4:</h1>
   <h2>@currentPlayer.name's turn</h2>
+  <h3><a href="@routes.HomeController.reset()">Reset game</a></h3>
+
   <div>
     <div class="row">
       @for(c <- 0 until Grid.NUM_COLUMNS){
