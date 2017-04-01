@@ -51,7 +51,10 @@ class WinConditionSpec extends FlatSpec with Matchers {
 
   it should "determine if the game has not yet been won" in {
     val grid = new Grid
-    grid.placeDisc(0, Disc.RED)
+
+    // checks to see if WinCondition#horizontalWin and WinCondition#verticalWin don't attempt to read outside of grid
+    grid.placeDisc(6, Disc.RED)
+
     WinCondition.hasGameBeenWon(grid, red) should be (false)
     WinCondition.hasGameBeenWon(grid, yellow) should be (false)
   }

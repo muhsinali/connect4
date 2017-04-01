@@ -48,7 +48,7 @@ object WinCondition {
   }
 
   private def horizontalWinInRow(grid: Grid, row: Int, disc: Disc): Boolean = {
-    (0 until Grid.NUM_COLUMNS).exists(c => horizontalFourInARow(grid: Grid, row, c, disc))
+    (0 to Grid.NUM_COLUMNS - NUM_CONSECUTIVE).exists(c => horizontalFourInARow(grid: Grid, row, c, disc))
   }
 
   private def verticalFourInARow(grid: Grid, startRow: Int, col: Int, disc: Disc): Boolean = {
