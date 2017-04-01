@@ -2,9 +2,11 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /                           controllers.HomeController.index
+GET     /                           controllers.HomeController.index()
 
 GET     /clicked/:col               controllers.HomeController.placeDisc(col: Int)
+
+GET     /game-over                  controllers.HomeController.gameOver()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
