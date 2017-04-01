@@ -8,5 +8,7 @@ GET     /clicked/:col               controllers.HomeController.placeDisc(col: In
 
 GET     /game-over                  controllers.HomeController.gameOver()
 
+GET     /not-found                  controllers.HomeController.notFound()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
