@@ -12,18 +12,28 @@ import play.api.mvc._
  */
 @Singleton
 class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
-  private val game = new Game
+  private var game = new Game
 
 
-  def index: Action[AnyContent] = Action {implicit request =>
+  def index(): Action[AnyContent] = Action {implicit request =>
+    if(game.hasGameBeenWon){
+      game = new Game
+    }
     Ok(views.html.main(game.grid, game.currentPlayer))
   }
 
   def placeDisc(col: Int): Action[AnyContent] = Action {
-    if(!game.placeDisc(col)){
-      Redirect(routes.HomeController.index()).flashing("error" -> "Column is full. Please choose another one.")
-    } else Redirect(routes.HomeController.index())
+    if(game.placeDisc(col)){
+      if(game.hasGameBeenWon) Redirect(routes.HomeController.gameOver())
+      else {
+        game.nextPlayer()
+        Redirect(routes.HomeController.index())
+      }
+    } else Redirect(routes.HomeController.index()).flashing("error" -> "Column is full. Please choose another one.")
   }
+
+  def gameOver(): Action[AnyContent] = Action {Ok(views.html.gameOver(game.currentPlayer))}
+
 
 }
 

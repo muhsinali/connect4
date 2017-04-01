@@ -8,21 +8,25 @@ class Game {
   var currentPlayer: Player = p1
 
   // Test configuration
-  grid.placeDisc(1, Disc.RED)
-  grid.placeDisc(1, Disc.YELLOW)
-  grid.placeDisc(5, Disc.YELLOW)
-
-
-  def placeDisc(col: Int): Boolean = {
-    val result = grid.placeDisc(col, currentPlayer.disc)
-    if(!result){
-      return false
+  val disc = Disc.RED
+  val other = Disc.YELLOW
+  for(c <- 0 until WinCondition.NUM_CONSECUTIVE){
+    for(_ <- 0 until c){
+      grid.placeDisc(c, other)
     }
-    nextPlayer()
-    result
+    if(c != WinCondition.NUM_CONSECUTIVE - 1) grid.placeDisc(c, disc)
   }
 
-  private def nextPlayer(): Unit = {
+
+  def hasGameBeenWon: Boolean = {
+    WinCondition.hasGameBeenWon(grid, currentPlayer.disc)
+  }
+
+  def nextPlayer(): Unit = {
     currentPlayer = if(currentPlayer == p1)  p2 else p1
+  }
+
+  def placeDisc(col: Int): Boolean = {
+    grid.placeDisc(col, currentPlayer.disc)
   }
 }
