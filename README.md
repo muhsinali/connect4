@@ -1,5 +1,6 @@
 Introduction [![Build Status](https://travis-ci.org/muhsinali/connect4.svg?branch=master)](https://travis-ci.org/muhsinali/connect4)
 =================================
+![alt tag](public/images/connect4.png)
 
 ### [Try out project here](http://connect4.muhsinali.xyz)
 
