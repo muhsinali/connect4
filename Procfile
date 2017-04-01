@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/connect4 -Dplay.crypto.secret=${APPLICATION_SECRET}
+web: target/universal/stage/bin/connect4 -Dhttp.port=${PORT} -Dplay.crypto.secret=${APPLICATION_SECRET}
