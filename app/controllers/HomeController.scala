@@ -33,6 +33,11 @@ class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller 
 
   def gameOver(): Action[AnyContent] = Action {Ok(views.html.gameOver(game.currentPlayer))}
 
+  def reset(): Action[AnyContent] = Action{
+    game = new Game
+    Redirect(routes.HomeController.index())
+  }
+
   def notFound(): Action[AnyContent] = Action{Ok(views.html.notFound())}
 }
 
