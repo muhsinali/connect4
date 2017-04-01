@@ -59,4 +59,67 @@ class WinConditionSpec extends FlatSpec with Matchers {
     WinCondition.hasGameBeenWon(grid, yellow) should be (false)
   }
 
+  it should "determine if the game has been tied" in {
+    val grid = new Grid
+
+    // Create stalemate configuration
+    // Column 0
+    grid.placeDisc(0, yellow)
+    grid.placeDisc(0, yellow)
+    grid.placeDisc(0, red)
+    grid.placeDisc(0, yellow)
+    grid.placeDisc(0, red)
+    grid.placeDisc(0, red)
+
+    // Column 1
+    grid.placeDisc(1, red)
+    grid.placeDisc(1, yellow)
+    grid.placeDisc(1, red)
+    grid.placeDisc(1, yellow)
+    grid.placeDisc(1, red)
+    grid.placeDisc(1, yellow)
+
+    // Column 2
+    grid.placeDisc(2, red)
+    grid.placeDisc(2, yellow)
+    grid.placeDisc(2, yellow)
+    grid.placeDisc(2, yellow)
+    grid.placeDisc(2, red)
+    grid.placeDisc(2, yellow)
+
+    // Column 3
+    grid.placeDisc(3, yellow)
+    grid.placeDisc(3, red)
+    grid.placeDisc(3, red)
+    grid.placeDisc(3, red)
+    grid.placeDisc(3, yellow)
+    grid.placeDisc(3, red)
+
+    // Column 4
+    grid.placeDisc(4, red)
+    grid.placeDisc(4, yellow)
+    grid.placeDisc(4, red)
+    grid.placeDisc(4, yellow)
+    grid.placeDisc(4, red)
+    grid.placeDisc(4, yellow)
+
+    // Column 5
+    grid.placeDisc(5, red)
+    grid.placeDisc(5, yellow)
+    grid.placeDisc(5, red)
+    grid.placeDisc(5, yellow)
+    grid.placeDisc(5, red)
+    grid.placeDisc(5, yellow)
+
+    // Column 6
+    grid.placeDisc(6, red)
+    grid.placeDisc(6, red)
+    grid.placeDisc(6, yellow)
+    grid.placeDisc(6, yellow)
+    grid.placeDisc(6, yellow)
+    grid.placeDisc(6, red)
+
+    WinCondition.hasGameBeenTied(grid, red, yellow) should be (true)
+  }
+
 }

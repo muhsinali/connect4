@@ -11,7 +11,9 @@ object WinCondition {
     horizontalWin(grid, disc) || verticalWin(grid, disc) || leftDiagonalWin(grid, disc) || rightDiagonalWin(grid, disc)
   }
 
-  def hasGameBeenTied(grid: Grid, disc: Disc): Boolean = grid.isFull
+  def hasGameBeenTied(grid: Grid, disc: Disc, other: Disc): Boolean = {
+    grid.isFull && !hasGameBeenWon(grid, disc) && !hasGameBeenWon(grid, other)
+  }
 
   def horizontalWin(grid: Grid, disc: Disc): Boolean = {
     (0 until Grid.NUM_ROWS).exists(r => horizontalWinInRow(grid, r, disc))
