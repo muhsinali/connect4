@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/connect4 -Dplay.crypto.secret=${APPLICATION_SECRET}
