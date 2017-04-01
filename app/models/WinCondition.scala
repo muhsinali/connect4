@@ -34,8 +34,7 @@ object WinCondition {
   def rightDiagonalWin(grid: Grid, disc: Disc): Boolean = {
     for {
       r <- 0 to Grid.NUM_ROWS - NUM_CONSECUTIVE
-      c <- Grid.NUM_COLUMNS - 1 to NUM_CONSECUTIVE-1 by -1
-
+      c <- Grid.NUM_COLUMNS - 1 to NUM_CONSECUTIVE - 1 by -1
       if rightDiagonalFourInARow(grid, r, c, disc)
     } return true
 
@@ -57,7 +56,7 @@ object WinCondition {
   }
 
   private def verticalWinInColumn(grid: Grid, col: Int, disc: Disc): Boolean = {
-    (0 until Grid.NUM_ROWS).exists(r => verticalFourInARow(grid: Grid, r, col, disc))
+    (0 to Grid.NUM_ROWS - NUM_CONSECUTIVE).exists(r => verticalFourInARow(grid: Grid, r, col, disc))
   }
 
   private def leftDiagonalFourInARow(grid: Grid, startRow: Int, startCol: Int, disc: Disc): Boolean = {
