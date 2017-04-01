@@ -14,12 +14,13 @@ class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller 
   private var game = new Game
 
 
+  def gameOver(): Action[AnyContent] = Action {Ok(views.html.gameOver(game.currentPlayer))}
+
   def index(): Action[AnyContent] = Action {implicit request =>
-    if(game.hasBeenWon){
-      game = new Game
-    }
     Ok(views.html.main(game.grid, game.currentPlayer))
   }
+
+  def notFound(): Action[AnyContent] = Action{Ok(views.html.notFound())}
 
   def placeDisc(col: Int): Action[AnyContent] = Action {
     if(game.placeDisc(col)){
@@ -31,13 +32,9 @@ class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller 
     } else Redirect(routes.HomeController.index()).flashing("error" -> "Column is full. Please choose another one.")
   }
 
-  def gameOver(): Action[AnyContent] = Action {Ok(views.html.gameOver(game.currentPlayer))}
-
   def reset(): Action[AnyContent] = Action{
     game = new Game
     Redirect(routes.HomeController.index())
   }
-
-  def notFound(): Action[AnyContent] = Action{Ok(views.html.notFound())}
 }
 
