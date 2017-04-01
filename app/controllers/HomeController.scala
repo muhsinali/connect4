@@ -16,7 +16,7 @@ class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller 
 
 
   def index(): Action[AnyContent] = Action {implicit request =>
-    if(game.hasGameBeenWon){
+    if(game.hasBeenWon){
       game = new Game
     }
     Ok(views.html.main(game.grid, game.currentPlayer))
@@ -24,7 +24,7 @@ class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller 
 
   def placeDisc(col: Int): Action[AnyContent] = Action {
     if(game.placeDisc(col)){
-      if(game.hasGameBeenWon) Redirect(routes.HomeController.gameOver())
+      if(game.hasBeenWon) Redirect(routes.HomeController.gameOver())
       else {
         game.nextPlayer()
         Redirect(routes.HomeController.index())
@@ -34,6 +34,6 @@ class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller 
 
   def gameOver(): Action[AnyContent] = Action {Ok(views.html.gameOver(game.currentPlayer))}
 
-
+  def notFound(): Action[AnyContent] = Action{Ok(views.html.notFound())}
 }
 
