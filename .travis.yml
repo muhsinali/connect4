@@ -3,3 +3,10 @@ scala:
 - 2.11.8
 jdk:
 - oraclejdk8
+deploy:
+  provider: heroku
+  api_key:
+    secure: m0oepuxtMKW9XOAYXDjoXrO1F89TkyzF00DF5wc/GtcV0Wsm2xWJIoiK6f/FbiO3rLQ/lCkXAFTT3HmIQvpmhATyAHVWnhgjV4aBADh+SicOlPmjcH2UKji0wUdz0RNpGNZ0BHxTT9dGg7URWoOE/TfXATw+tms5Uf3YDc5A1h7c3Ek47bwelH+PJAjE2RgJlkqM3N01jIuEWD2oXlE4YGtp7MbbuRLIz0x4O00tHQmmjo/K4TOuWdCIYOYT6IUB87UYYsELAE+en05O/6kSFUFtfSBNRICFqAOUJJ0zJr5myQCL1VbtIRcOayTXGKzkIYG78B0nF4sF+SqvNkU8iFrLKJhhHlFa3sfUW/F7wVzXg8azXTUUNG1XXcY1mTecW5uSLQqjEIAqADvpnaRY6Ee71dWba5obVNAGZ0qwksr+rcEEwta9xnnKmSRdKBu9OoV/Kh+tVWRwP72gtQC4qVbYmfNDlyxvDloHHMQbnx1QB+NphxTPVaGQookuPG5fqzvoGeP1e9HAZKjKeI3xSmflcgNNIWIICacCPAOR1uagEaMVxwDEyzsMRHrseqmRFegYr4BEJvJyoz2X0riWZCIWa52k+748p/l3kxTo1PP9ubEkyRuA2izxzHSX4Kl6bdCRYcR1LFZJUBGt/2yusSvDCZmNnrc0srOfZaGb20s=
+  app: muhsinali-connect4
+  on:
+    repo: muhsinali/connect4
