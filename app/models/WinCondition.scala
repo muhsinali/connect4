@@ -3,6 +3,35 @@ package models
 import models.Disc.Disc
 
 
+/*
+* WinCondition contains all the different ways that a connect 4 game could be won or be tied.
+*
+* Essentially, the following configurations of discs with the same colour are searched for within a grid. If one such
+* configuration is found, it is said that the game has been won.
+*
+* Horizontal:
+*   X X X X
+*
+* Vertical:
+*   X
+*   X
+*   X
+*   X
+*
+* Left diagonal:
+*   X
+*     X
+*       X
+*         X
+*
+* Right diagonal:
+*         X
+*       X
+*     X
+*   X
+*
+* */
+
 object WinCondition {
   // Number of consecutive discs required for game to be won
   val NUM_CONSECUTIVE = 4
@@ -15,14 +44,17 @@ object WinCondition {
     grid.isFull && !hasGameBeenWon(grid, disc) && !hasGameBeenWon(grid, other)
   }
 
+  // This is exposed to make it testable
   def horizontalWin(grid: Grid, disc: Disc): Boolean = {
     (0 until Grid.NUM_ROWS).exists(r => horizontalWinInRow(grid, r, disc))
   }
 
+  // This is exposed to make it testable
   def verticalWin(grid: Grid, disc: Disc): Boolean = {
     (0 until Grid.NUM_COLUMNS).exists(c => verticalWinInColumn(grid, c, disc))
   }
 
+  // This is exposed to make it testable
   def leftDiagonalWin(grid: Grid, disc: Disc): Boolean = {
     for {
       r <- 0 to Grid.NUM_ROWS - NUM_CONSECUTIVE
@@ -33,6 +65,7 @@ object WinCondition {
     false
   }
 
+  // This is exposed to make it testable
   def rightDiagonalWin(grid: Grid, disc: Disc): Boolean = {
     for {
       r <- 0 to Grid.NUM_ROWS - NUM_CONSECUTIVE

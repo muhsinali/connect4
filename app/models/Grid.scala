@@ -2,6 +2,15 @@ package models
 
 import models.Disc._
 
+/*
+* Grid stores all the discs for a given game.
+*
+* Grid's co-ordinate system:
+*   - Origin is located in top left corner
+*   - Column value increases from left to right
+*   - Row value increases from top to bottom
+*
+* */
 
 class Grid {
   private val grid: Array[Array[Disc]] = {

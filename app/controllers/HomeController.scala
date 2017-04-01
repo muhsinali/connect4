@@ -6,10 +6,9 @@ import models.Game
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc._
 
-/**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
+/*
+ * HomeController handles all requests from the user and contains all entry points to this web app.
+ * */
 @Singleton
 class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
   private var game = new Game
