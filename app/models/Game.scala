@@ -18,15 +18,11 @@ class Game {
   }
 
 
-  def hasGameBeenWon: Boolean = {
-    WinCondition.hasGameBeenWon(grid, currentPlayer.disc)
-  }
+  def hasBeenWon: Boolean = WinCondition.hasGameBeenWon(grid, currentPlayer.disc)
 
   def nextPlayer(): Unit = {
     currentPlayer = if(currentPlayer == p1)  p2 else p1
   }
 
-  def placeDisc(col: Int): Boolean = {
-    grid.placeDisc(col, currentPlayer.disc)
-  }
+  def placeDisc(col: Int): Boolean = grid.placeDisc(col, currentPlayer.disc)
 }
