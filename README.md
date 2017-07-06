@@ -3,7 +3,7 @@ Introduction [![Build Status](https://travis-ci.org/muhsinali/connect4.svg?branc
 ![alt tag](public/images/connect4.png)
 
 ### [Try out project here](http://connect4.muhsinali.xyz)
-### Note: Uses free dyno so app takes ~30s to boot up
+#### (Uses free dyno so app takes ~30s to boot up from sleep)
 
 This is a simple implementation of the Connect 4 game. 
 
