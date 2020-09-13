@@ -1,16 +1,13 @@
-Introduction [![Build Status](https://travis-ci.org/muhsinali/connect4.svg?branch=master)](https://travis-ci.org/muhsinali/connect4)
+Introduction 
 =================================
 ![alt tag](public/images/connect4.png)
-
-### [Try out project here](http://connect4.muhsinali.xyz)
-#### (Uses free dyno so app takes ~30s to boot up from sleep)
 
 This is a simple implementation of the Connect 4 game. 
 
 
 ### Key features:
 - Game was implemented in a [TDD fashion](https://github.com/muhsinali/connect4/blob/master/test/models/GridSpec.scala)
-- Used GitFlow and created a continuous deployment pipeline using [Travis](https://travis-ci.org/muhsinali/connect4) and Heroku
+- Used GitFlow and created a continuous deployment pipeline using Travis and Heroku
 - Added a [GZip compression filter](https://github.com/muhsinali/connect4/blob/master/app/Filters.scala) to compress server responses
 
 
